@@ -18,12 +18,13 @@ import com.example.quanlyphongtro.model.Tenant;
 
 @Database(entities = {Room.class, RoomType.class, Room_Tenant.class, Service.class, Bill.class, BillDetail.class, Tenant.class}, version = 1)
     public abstract class QuanLyPhongTroDB extends RoomDatabase {
-        private static final String DATABASE_NAME = "QuanLyPhongTro.db";
+        private static final String DATABASE_NAME = "oke.db";
         private static QuanLyPhongTroDB instance;
 
     public static synchronized QuanLyPhongTroDB getInstance(Context context){
         if(instance == null){
         instance = androidx.room.Room.databaseBuilder(context.getApplicationContext(), QuanLyPhongTroDB.class, DATABASE_NAME)
+                .createFromAsset("oke.db")
                 .allowMainThreadQueries()
                 .addCallback(roomCallback)
                 .build();
