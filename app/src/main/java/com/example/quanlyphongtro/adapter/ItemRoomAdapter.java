@@ -52,10 +52,6 @@ public class ItemRoomAdapter extends RecyclerView.Adapter<ItemRoomAdapter.ItemRo
     }
 
 
-
-
-
-
     public ItemRoomAdapter(Context context) {
         this.context = context;
     }
@@ -65,8 +61,6 @@ public class ItemRoomAdapter extends RecyclerView.Adapter<ItemRoomAdapter.ItemRo
         this.roomList = list;
         notifyDataSetChanged();
     }
-
-
 
     @NonNull
     @Override

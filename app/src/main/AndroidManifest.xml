@@ -23,9 +23,6 @@
             android:name=".activity.AddTenantToRoomActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AddTenantToRoom"
-            android:exported="false" />
-        <activity
             android:name=".activity.UpdateBillActivity"
             android:exported="false" />
         <activity

@@ -55,8 +55,6 @@ public class AddTenantToRoomFragment extends Fragment {
                 }
             }
         });
-
-
         return view;
     }
 
@@ -87,10 +85,8 @@ public class AddTenantToRoomFragment extends Fragment {
             Toast.makeText(getContext(), "Thành viên này đã ở trong phòng!", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         // Lấy số lượng người hiện tại trong phòng
         int currentTenantCount = roomTenantDAO.getCurrentTenantCount(roomId);
-
         // Lấy sức chứa tối đa của phòng
         int roomCapacity = roomTenantDAO.getRoomMaxOccupants(roomId);
 
