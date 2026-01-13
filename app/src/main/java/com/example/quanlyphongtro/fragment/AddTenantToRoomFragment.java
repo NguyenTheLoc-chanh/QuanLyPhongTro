@@ -118,16 +118,19 @@ public class AddTenantToRoomFragment extends Fragment {
 
     // Thêm người thuê vào phòng
     private void addTenantToRoom(int roomId, int tenantId) {
-        LocalDate currentDate = null;
+        // Determine start date as a String in yyyy-MM-dd format in a way that works on all API levels
+        String startDateStr;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            currentDate = LocalDate.now();
+            startDateStr = LocalDate.now().toString();
+        } else {
+            // Use java.text.SimpleDateFormat for older Android versions
+            startDateStr = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
         }
-
         Room_TenantDAO roomTenantDAO = database.roomTenantDAO();
 
         if (canAddTenantToRoom(roomId, tenantId, roomTenantDAO)) {
-            assert currentDate != null;
-            roomTenantDAO.insertRoomTenant(roomId, tenantId, currentDate.toString(), "NULL");
+            // Insert using the startDateStr computed above
+            roomTenantDAO.insertRoomTenant(roomId, tenantId, startDateStr, "NULL");
             Toast.makeText(getContext(), "Thêm thành viên vào phòng thành công!", Toast.LENGTH_SHORT).show();
             checkStatusRoom(roomTenantDAO, roomId);
         } else {
